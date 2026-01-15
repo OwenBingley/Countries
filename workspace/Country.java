@@ -18,7 +18,8 @@ public class Country
         language = "";
         imageFile = "";
     }
-
+    //precondition: parameters are valid strings
+    // postcondition: initializes a Country object with the given details
     // constructor with arguments
     public Country(String name, String capital, String language, String imageFile) {
         this.name = name;
@@ -27,7 +28,7 @@ public class Country
         this.imageFile = imageFile;
     }
 
-    // accessor methods
+    // getter methods
     public String getName() {
         return name;
     }
@@ -43,10 +44,10 @@ public class Country
     public String getImageFile() {
         return imageFile;
     }
-
-    // toString method
+    //precondition: none
+    //postcondition: returns a string representation of the country's details
+    // toString method that prints the country's details
     public String toString() {
-        return name + "'s capital is " + capital +
-               " and its primary language is " + language + ".";
+        return name + "'s capital is " + capital + " and its primary language is " + language;
     }
 }

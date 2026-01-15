@@ -25,17 +25,19 @@ public class Main
     private JLabel imageLabel;
     private JLabel outputLabel;
     private JTextArea userInput;
-
-    public static void main(String[] args) {
+    //precondition: none
+   // postcondition: starts the GUI application
+ public static void main(String[] args) {
         Main gui = new Main();
         gui.loadCountries();
         gui.showCountry();
     }
-
-    /* Reads data from CSV file */
+    //precondition: none
+   // postcondition: Loads country data from a CSV file into the countryArray
+    // Loads country data from a CSV file into the countryArray
     public void loadCountries() {
         File file = new File("/workspaces/Countries/workspace/countries-data.csv");
-
+       // Read the file and populate countryArray
         try {
             Scanner scanner = new Scanner(file);
             int i = 0;
@@ -57,8 +59,9 @@ public class Main
             System.out.println("File not found.");
         }
     }
-
-    /* Displays the current country */
+// precondition: countryArray is populated
+   // postcondition: displays the current country image and prompts for capital
+    // Displays the current country image and prompts for capital
     public void showCountry() {
         Country c = countryArray[index];
         String imagefile = c.getImageFile();
@@ -68,8 +71,9 @@ public class Main
 
         outputLabel.setText("What is the capital of this country?");
     }
-
-    /* Next button */
+// precondition: none
+   // postcondition: moves to the next country in the array
+    // Next button
     public void nextButtonClick() {
         index++;
         if (index >= countryArray.length) {
@@ -79,16 +83,18 @@ public class Main
         userInput.setText("");
         showCountry();
     }
-
-    /* Review button */
+// precondition: none
+   // postcondition: displays the current country's details
+ // Review button
     public void reviewButtonClick() {
         Country c = countryArray[index];
         String info = c.toString();
         System.out.println(info);
         outputLabel.setText(info);
     }
-
-    /* Quiz button */
+    //precondition: none
+   // postcondition: checks the user's answer for the quiz
+    // Quiz button
     public void quizButtonClick() {
         Country c = countryArray[index];
         String answer = userInput.getText().trim();
@@ -102,8 +108,9 @@ public class Main
         }
         userInput.setText("");
     }
-
-    /* GUI constructor */
+    // precondition: none
+   // postcondition: sets up the GUI components
+    // Constructor to set up the GUI
     public Main() {
         jFrame.setLayout(new FlowLayout());
         jFrame.setSize(500, 360);
